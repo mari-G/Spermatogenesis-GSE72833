@@ -3,18 +3,20 @@ import pandas as pd
 def xlsx2pd(sheet_range):
     global data_xls
     global sheet_name_list
+    global stage_name
 
     data_xls = pd.ExcelFile("GSE72833_GeneLists.xlsx")
     sheet_name_list = data_xls.sheet_names
 
     for i in range(sheet_range):
-        #sheet_name=None for load all sheets，or sheet_name=[0,10]
-        sheet_name = sheet_name_list[i]
-        df_tmp = data_xls.parse(sheet_name)
-        df_tmp_usecols = da_tmp[re.]
-        df_tmp_usecols.to_csv(sheet_name + ".csv", index= False)
+        #sheet_name=None表示读取全部sheet，或者sheet_name=[0,10]
+        stage_name = sheet_name_list[i]
+        df_tmp = data_xls.parse(stage_name)
+        df_tmp.to_csv(stage_name + ".csv", index= False)
+        print(stage_name)
 
-xlsx2pd(7)    
+xlsx2pd(8)    
+print("stages:\t", sheet_name_list)
 
 # new DataFrame columned by day
 
@@ -24,17 +26,19 @@ usecols = list(range(6, 34))
 usecols.append(0)
 # print(usecols)
 
-ori_df = pd.read_csv(r"LL+Z.csv", usecols= usecols)
+stage_filename = "LL+Z.csv"
+ori_df = pd.read_csv(stage_filename, usecols= usecols)
 ori_df.set_index(["gene_id"], inplace= True)
 ori_df.index.name = None
 print(ori_df.head())
 
 col_names = list(ori_df.columns)
-print(col_names)
-print("\n")
+# print(col_names)
+# print("\n")
 
+                                                                                            
 day_list = []
-for col_name in col_names[1:]:
+for col_name in col_names:
     if "_" in col_name:
         day_sample_num = col_name.split(r"_")
         day = day_sample_num[0]
