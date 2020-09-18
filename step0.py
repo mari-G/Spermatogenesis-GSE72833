@@ -18,9 +18,8 @@ def xlsx2pd(sheet_range):
 xlsx2pd(8)    
 print("stages:\t", sheet_name_list)
 
-# new DataFrame columned by day
 
-import pandas as pd 
+# new DataFrame columned by day 
 
 usecols = list(range(6, 34))
 usecols.append(0)
@@ -30,7 +29,7 @@ stage_filename = "LL+Z.csv"
 ori_df = pd.read_csv(stage_filename, usecols= usecols)
 ori_df.set_index(["gene_id"], inplace= True)
 ori_df.index.name = None
-print(ori_df.head())
+# print(ori_df.head())
 
 col_names = list(ori_df.columns)
 # print(col_names)
@@ -38,18 +37,18 @@ col_names = list(ori_df.columns)
 
                                                                                             
 day_list = []
+day_sample_dict = {}
 for col_name in col_names:
     if "_" in col_name:
         day_sample_num = col_name.split(r"_")
-        day = day_sample_num[0]
-        sample_num = day_sample_num[1]
-        # print(day, sample_num)
+        day = int(day_sample_num[0])
+        sample_num = int(day_sample_num[1])
         day_list.append(day)
-        # day_set=set(day_list)
-        # print(day_list)
-
+        day_sample = day_sample_dict[day] = sample_num
+        # print(day_sample_dict) 
     else:
         continue
 day_col = sorted(set(day_list), key= day_list.index)
 df_mean_by_day = pd.DataFrame(index= ori_df.index, columns= day_col)
+print(day_sample_dict)
 print(df_mean_by_day)
