@@ -8,7 +8,7 @@ def xlsx2pd(sheet_range):
     sheet_name_list = data_xls.sheet_names
 
     for i in range(sheet_range):
-        #sheet_name=None表示读取全部sheet，或者sheet_name=[0,10]
+        #sheet_name=None for load all sheets，or sheet_name=[0,10]
         sheet_name = sheet_name_list[i]
         df_tmp = data_xls.parse(sheet_name)
         df_tmp_usecols = da_tmp[re.]
