@@ -26,6 +26,7 @@ usecols.append(0)
 
 ori_df = pd.read_csv(r"LL+Z.csv", usecols= usecols)
 ori_df.set_index(["gene_id"], inplace= True)
+ori_df.index.name = None
 print(ori_df.head())
 
 col_names = list(ori_df.columns)
