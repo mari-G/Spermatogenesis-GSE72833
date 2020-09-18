@@ -35,20 +35,18 @@ col_names = list(ori_df.columns)
 # print(col_names)
 # print("\n")
 
-                                                                                            
-day_list = []
+
 day_sample_dict = {}
 for col_name in col_names:
     if "_" in col_name:
         day_sample_num = col_name.split(r"_")
         day = int(day_sample_num[0])
         sample_num = int(day_sample_num[1])
-        day_list.append(day)
         day_sample = day_sample_dict[day] = sample_num
         # print(day_sample_dict) 
     else:
         continue
-day_col = sorted(set(day_list), key= day_list.index)
-df_mean_by_day = pd.DataFrame(index= ori_df.index, columns= day_col)
+
+df_mean_by_day = pd.DataFrame(index= ori_df.index, columns= day_sample_dict.keys())
 print(day_sample_dict)
 print(df_mean_by_day)
