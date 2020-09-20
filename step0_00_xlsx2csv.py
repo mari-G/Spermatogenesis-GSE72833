@@ -60,7 +60,7 @@ def group_by_stage2stage_day(stage_name):
             # print(col_list_for_everyday_mean)
             try:
                 df_mean_by_day[str(day)] = ori_df[col_list_for_everyday_mean].mean(axis= 1)
-                df_mean_by_day.to_csv("day_" + str(day) + "_" + stage_name + ".csv", columns= [str(day)])
+                df_mean_by_day.to_csv("day" + str(day) + "_" + stage_name + ".csv", columns= [str(day)])
             except KeyError:
                 continue
             # print(df_mean_by_day)
