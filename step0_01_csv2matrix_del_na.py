@@ -30,6 +30,7 @@ def single_pd2stage_pd(stage):
     matrix_df = matrix_df.join(stage_df)
     print("matrix_df:", matrix_df)
 
+# 待完善
 Spgonia = ["day8_Sp'gonia", "day10_Sp'gonia", "day12_Sp'gonia", "day14_Sp'gonia", "day16_Sp'gonia", "day18_Sp'gonia"]
 PL = ["day8_PL", "day10_PL", "day12_PL", "day14_PL", "day16_PL", "day18_PL"]
 EL = ["day8_EL", "day10_EL", "day12_EL", "day14_EL", "day16_EL", "day18_EL"]
